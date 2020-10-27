@@ -32,15 +32,10 @@ for i=1:N_T
     b_idx = V < E_R;
     % born
     fprintf('will born: %d\n',sum(b_idx .* m)); 
-    if (sum(b_idx .* m) > 10*N0) 
-        return;
-    end
+
     x=repelem(x, 1, b_idx .* m + 1);
     N = size(x,2)
     fprintf('after born, avg energy: %f\n',sum(V)/N);
-    if N == 0
-        return;
-    end
     V_avg = sum(V)/N;
     E_R = V_avg-(N-N0)/(N0*dt(i));
         
