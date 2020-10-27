@@ -32,7 +32,7 @@ for i=1:N_T
     b_idx = V < E_R;
     % born
     fprintf('will born: %d\n',sum(b_idx .* m)); 
-    if (sum(b_idx .* m) > 10000) 
+    if (sum(b_idx .* m) > 10*N0) 
         return;
     end
     x=repelem(x, 1, b_idx .* m + 1);
