@@ -1,10 +1,10 @@
 clear;
-N0=10000;
+N0=100000;
 x=20*rand(3,N0)-10;
 E_R=0;
-T=50;
-dt_scalar=0.05;
-N_T=T/dt_scalar;
+T=35;
+dt_scalar=0.04;
+N_T=fix(T/dt_scalar);
 dt=ones(N_T,1)*dt_scalar;
 figure(1);
 N=N0;
@@ -36,8 +36,15 @@ for i=1:N_T
     % calculate the new reference energy
     V_avg = sum(V)/N;
     E_R = V_avg-(N-N0)/(N0*dt(i));
-    fprintf('V_avg: %.5f, E_R=%.5f, N=%.5f\n', V_avg, E_R, N);
+    
+    fprintf('V_avg: %.5f, E_R=%.5f, N=%5.0f\n', V_avg, E_R, N);
         
-    plot(i,E_R,'r.');
+    plot(i, E_R, 'r.');
     hold on;
 end
+
+figure(2);
+hist(sqrt(sum(x.^2)),100);
+
+figure(3);
+plot3(x(1,:), x(2,:), x(3,:),'.');
